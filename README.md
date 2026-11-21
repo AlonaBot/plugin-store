@@ -30,4 +30,4 @@ node scripts/check-index.mjs
 
 ## 许可
 
-[AGPL-3.0-only](LICENSE)。
+[MIT](LICENSE)。

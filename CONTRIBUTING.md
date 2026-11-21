@@ -33,4 +33,4 @@ node scripts/check-index.mjs
 
 ## 许可
 
-本仓库内容采用 AGPL-3.0-only，见 [LICENSE](LICENSE)。
+本仓库内容采用 MIT，见 [LICENSE](LICENSE)。
