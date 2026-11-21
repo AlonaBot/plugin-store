@@ -27,7 +27,3 @@ node scripts/check-index.mjs
 收录申请走 [Issue 表单](.github/ISSUE_TEMPLATE/submit-plugin.yml)，WebUI 的发布弹窗会把它预填好。维护者审核后更新 `index.json`，申请者不需要自己改这个仓库。审核要点见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 本仓库只托管索引，不下载或执行任何社区组件；组件由使用方的 Core 按各自仓库的 Release 与签名规则安装。
-
-## 许可
-
-[MIT](LICENSE)。

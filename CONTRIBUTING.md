@@ -30,7 +30,3 @@ node scripts/check-index.mjs
 ## 安全性
 
 本仓库的 CI 只读取 `index.json`，不下载、不构建、不执行任何被索引的组件，也不接触发布私钥。索引条目不代表对组件行为的担保：安装时的签名、摘要与平台校验始终在 Core 侧完成。
-
-## 许可
-
-本仓库内容采用 MIT，见 [LICENSE](LICENSE)。
