@@ -1,0 +1,59 @@
+# 收录申请：维护者审核后更新索引，申请者不直接改仓库。
+name: 收录插件 / Submit a component
+description: 申请把已发布 Release 的组件收录到官方插件源。
+title: "[Index] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        官方 WebUI 商店的发布弹窗会预填本表单。
+        条目只写仓库、角色与可选标签。
+        名称、版本、描述与图标由商店从最新 Release 读取。
+        The WebUI publish dialog prefills this form. Entries carry only the
+        repository, role and optional tags; the store reads name, version and
+        description from the latest Release.
+  - type: input
+    id: repo
+    attributes:
+      label: 仓库 / Repository
+      description: owner/name 形式，与 Release 所在仓库一致。
+      placeholder: AlonaBot/alonabot-plugin-help
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: 角色 / Role
+      description: 与组件实际角色一致。Must match its role.
+      options:
+        - plugin
+        - adapter
+        - agent
+        - webui
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: 标签 / Tags
+      description: 可选，逗号分隔，用于商店检索。
+      placeholder: help,commands
+  - type: input
+    id: release_url
+    attributes:
+      label: Release 地址 / Release URL
+      description: 组件仓库中已发布的最新 Release 页面。
+      placeholder: owner/name/releases/tag/v0.1.0
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 确认 / Confirmations
+      options:
+        - label: 该 Release 带 release.json 与包内 manifest。
+          required: true
+        - label: 这不是镜像、空壳仓库或索引中已存在的条目。
+          required: true
+        - label: 我明白是否收录由维护者审核决定。
+          required: true

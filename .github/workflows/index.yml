@@ -1,0 +1,26 @@
+# 只用 Node 标准库校验 index.json；不下载、不构建、不执行被索引的组件。
+name: Index check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  index:
+    name: Index format
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 26.5.1
+      - name: 校验 index.json
+        run: node scripts/check-index.mjs

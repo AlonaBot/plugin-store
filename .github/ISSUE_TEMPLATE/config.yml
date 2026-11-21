@@ -1,0 +1,9 @@
+# 关闭空白 issue，并把组件使用问题引导到文档；收录走 submit-plugin.yml。
+blank_issues_enabled: false
+contact_links:
+  - name: 文档 / Documentation
+    url: https://github.com/AlonaBot/AlonaBot/blob/main/docs/index.md
+    about: 使用问题请先查阅文档。Please check the documentation for usage questions.
+  - name: 插件开发规范 / Plugin guide
+    url: https://github.com/AlonaBot/AlonaBot/blob/main/docs/plugin-guide.md
+    about: 编写与发布组件前先读这一节。Read this before building a component.
