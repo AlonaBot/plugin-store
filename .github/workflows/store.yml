@@ -1,0 +1,55 @@
+# 把 index.json 展开为商店快照 store.json，发布到 index 分支供 GitHub raw、jsDelivr 与镜像读取。
+# 生成器只下载归档读取 plugin.yaml 与图标，不执行组件；PR 上只生成不发布，用于检查新条目。
+name: Store snapshot
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: store-snapshot-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    name: Generate store.json
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        with:
+          go-version-file: go.mod
+          cache: false
+      - name: 生成快照
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          go vet ./...
+          go run ./cmd/storegen -out "$RUNNER_TEMP/store/store.json"
+      - name: 发布到 index 分支
+        if: github.event_name != 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          cd "$RUNNER_TEMP/store"
+          git init -q -b index
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add store.json
+          git commit -q -m "chore/store: 更新商店快照 ${GITHUB_SHA::7}"
+          git push -q --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" index
+      - name: 刷新 jsDelivr 缓存
+        if: github.event_name != 'pull_request'
+        run: curl -fsS "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@index/store.json"
