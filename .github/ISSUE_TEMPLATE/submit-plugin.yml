@@ -51,7 +51,7 @@ body:
     attributes:
       label: 确认 / Confirmations
       options:
-        - label: 该 Release 带 release.json 与包内 manifest。
+        - label: 该 Release 的组件归档按 <id>-<version>-<平台>.tar.gz 命名，包内有 plugin.yaml。
           required: true
         - label: 这不是镜像、空壳仓库或索引中已存在的条目。
           required: true

@@ -2,6 +2,11 @@
   "version": 1,
   "plugins": [
     {
+      "repo": "AlonaBot/alonabot-adapter-telegram",
+      "role": "adapter",
+      "tags": ["Telegram"]
+    },
+    {
       "repo": "AlonaBot/alonabot-adapter-onebot11",
       "role": "adapter",
       "tags": ["OneBot11", "QQ"]
