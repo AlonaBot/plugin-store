@@ -19,6 +19,19 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
+          fetch-depth: 0
+      - name: 检查提交范围的空白错误
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = workflow_dispatch ]; then
+            git show --format= --check HEAD
+          else
+            git diff --check "$BASE_SHA" HEAD
+          fi
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version: 26.5.1

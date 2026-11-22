@@ -1,0 +1,10 @@
+# 按索引、文档和自动化文件分类 PR。
+"area: index":
+  - changed-files:
+      - any-glob-to-any-file: ["index.json", "scripts/**"]
+"area: docs":
+  - changed-files:
+      - any-glob-to-any-file: ["*.md", "docs/**"]
+"area: github-actions":
+  - changed-files:
+      - any-glob-to-any-file: [".github/**"]
