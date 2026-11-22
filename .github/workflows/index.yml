@@ -20,6 +20,22 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
+      - name: 检查 main 文件范围
+        if: github.ref == 'refs/heads/main' || github.base_ref == 'main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git ls-files -z > "$RUNNER_TEMP/main-paths"
+          rejected=0
+          while IFS= read -r -d '' path; do
+            case "$path" in
+              .agents/*|.claude/*|.codex/*|.serena/*|.playwright-cli/*|docs/goals/*|docs/execution-order.md|docs/benchmarks.md|spec/*|goal-[0-9]*/*|delegation-skills-workspace/*|experiments/*)
+                printf 'main 包含个人维护资料：%q\n' "$path"
+                rejected=1
+                ;;
+            esac
+          done < "$RUNNER_TEMP/main-paths"
+          exit "$rejected"
       - name: 检查提交范围的空白错误
         env:
           EVENT_NAME: ${{ github.event_name }}

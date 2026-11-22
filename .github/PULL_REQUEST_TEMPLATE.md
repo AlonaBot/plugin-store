@@ -30,7 +30,7 @@ Impact on protocol, SDK, config, data, or how it runs, plus the recovery steps. 
 
 ## 检查清单 / Checklist
 
-- [ ] 改动在已确认范围内，不含凭据、真实用户数据或本地临时测试 / The change stays within the confirmed scope and contains no credentials, real user data, or local temporary tests
+- [ ] 改动在已确认范围内，不含凭据、真实用户数据或本地临时测试 / The change stays within the confirmed scope and contains no credentials, real user data or local temporary tests
 - [ ] 没有新增依赖，或已取得维护者明确批准并说明用途 / No new dependencies, or a maintainer approved them and their purpose is stated
-- [ ] 已按编码规范检查包文档、命名、注释与测试提交范围，或本次不涉及代码 / Package docs, naming, comments, and test scope follow the coding standards, or this change has no code
-- [ ] 相关契约、文档和生成源已同步，或本次不需要同步 / Related contracts, docs, and generated sources are in sync, or no sync was needed
+- [ ] 已按编码规范检查包文档、命名、注释与测试提交范围，或本次不涉及代码 / Package docs, naming, comments and committed test scope follow the coding standards, or this change has no code
+- [ ] 相关契约、文档和生成源已同步，或本次不需要同步 / Related contracts, documentation and generated sources are in sync, or no sync was needed
