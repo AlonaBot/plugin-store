@@ -1,32 +1,30 @@
-# 贡献索引条目
+# Contributing to the component index
 
-本仓库只维护 `index.json`：官方 WebUI 的缺省插件源。格式以 Core 的 [CONTRACTS §9.2](https://github.com/AlonaBot/AlonaBot/blob/main/spec/CONTRACTS-v0.1.md) 为准，不在这里定义字段或增加未来字段。
+[简体中文](CONTRIBUTING.zh-CN.md)
 
-## 申请收录
+Follow the [Core contribution guide](https://github.com/AlonaBot/AlonaBot/blob/main/CONTRIBUTING.md) for scope, dependency approval, commit language, PR format and review. This guide adds the index-specific steps.
 
-1. 组件在独立的公开仓库发布过 GitHub Release，归档名为 `<id>-<version>-<os>-<arch>.tar.gz`（静态 WebUI 为 `-any`），包内有 `plugin.yaml`。
-2. 通过 [Issue 表单](.github/ISSUE_TEMPLATE/submit-plugin.yml)提交，填写仓库、角色、可选标签与 Release 地址。WebUI 商店的发布弹窗会预填这四项，不需要手抄格式。
-3. 维护者审核后更新 `index.json` 并合并。条目由维护者维护，申请者不直接改这个仓库。
+## Request a listing
 
-## 审核要点
+1. Publish a GitHub Release in a publicly accessible component repository. Provide platform archives containing the component's `plugin.yaml` declaration and required resources.
+2. Complete the [submission form](.github/ISSUE_TEMPLATE/submit-plugin.yml) with the repository, role, optional tags and Release URL. The WebUI publish dialog can prefill these fields.
+3. A maintainer reviews the submission and updates `index.json`.
 
-- 仓库确实可公开访问，最新 Release 提供组件包，且 GitHub 为每个归档给出 sha256；PR 上的 Store snapshot 检查会实际读取它。
-- `role` 与组件实际角色一致：`plugin` 唯一可多装，`adapter` 按 `adapter_id` 去重，`agent` 与 `webui` 全局各一个。
-- 组件不是索引仓库的镜像或空壳，不把索引当成安装包下载点。
-- 标签能帮助检索，不堆砌无关词；同一个仓库不在索引里出现两次（大小写不同也不行）。
+Reviewers check that the repository and Release are accessible, the archive declaration matches the repository and role, and the entry is useful and unique. Use relevant search tags. Review the component's source and documentation before listing it.
 
-## 改索引
+## Change the index
 
-只改 `index.json`，保持 `version` 为 1、条目只含 `repo`、`role`、`tags`。提交前在仓库根目录运行：
+Keep entries to `repo`, `role` and optional `tags`, following the [index format](docs/index-format.md). Preserve existing entries unless the change specifically concerns them.
+
+Run:
 
 ```sh
 node scripts/check-index.mjs
+git diff --check
 ```
 
-不要往索引里写名称、描述、版本、摘要、图标或下载地址：这些由快照生成器从组件仓库最新 Release 与包内 `plugin.yaml` 取得，写进索引就是重复元数据，还会在发布后过期。
+Use a Simplified Chinese commit message. PR titles follow Core's `type/scope: 摘要` convention, for example `docs/index: 更新收录指南`. Complete the PR template with the reason, actual verification and compatibility or risk information. The maintainer reviews and squash-merges the PR after its current checks pass.
 
-提交信息格式 `type/scope: 摘要`，例如 `feat/index: 收录 weather 插件`；正文说明收录的仓库、审核结果与实际运行的命令。代码注释、commit message 与文档用简体中文。
+CI validates the local index with Node.js and checks repository changes. It reads repository data without downloading or executing listed components. Core performs component installation checks when a user installs a package.
 
-## 安全性
-
-本仓库的 CI 校验 `index.json`，生成快照时下载归档只读取 `plugin.yaml` 与图标，不构建、不执行任何被索引的组件。索引条目不代表对组件行为的担保：安装时的摘要与平台校验始终在 Core 侧完成。
+Report vulnerabilities through [Core's private security reporting channel](https://github.com/AlonaBot/AlonaBot/security/advisories/new). Remove credentials and real user data from public reports.

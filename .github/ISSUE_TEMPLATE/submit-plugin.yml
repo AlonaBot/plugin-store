@@ -1,7 +1,9 @@
 # 收录申请：维护者审核后更新索引，申请者不直接改仓库。
 name: 收录插件 / Submit a component
-description: 申请把已发布 Release 的组件收录到官方插件源。
+description: 收录已发布的组件。List a component with a published Release.
 title: "[Index] "
+labels: [enhancement, "area: index"]
+assignees: [FlanChanXwO]
 body:
   - type: markdown
     attributes:
@@ -16,7 +18,7 @@ body:
     id: repo
     attributes:
       label: 仓库 / Repository
-      description: owner/name 形式，与 Release 所在仓库一致。
+      description: owner/name 形式，与 Release 所在仓库一致。Use the repository containing the Release.
       placeholder: AlonaBot/alonabot-plugin-help
     validations:
       required: true
@@ -36,13 +38,13 @@ body:
     id: tags
     attributes:
       label: 标签 / Tags
-      description: 可选，逗号分隔，用于商店检索。
+      description: 可选，逗号分隔，用于商店检索。Optional comma-separated search tags.
       placeholder: help,commands
   - type: input
     id: release_url
     attributes:
       label: Release 地址 / Release URL
-      description: 组件仓库中已发布的最新 Release 页面。
+      description: 组件仓库中已发布的最新 Release 页面。Latest published Release in the component repository.
       placeholder: owner/name/releases/tag/v0.1.0
     validations:
       required: true
@@ -51,9 +53,9 @@ body:
     attributes:
       label: 确认 / Confirmations
       options:
-        - label: 该 Release 的组件归档按 <id>-<version>-<平台>.tar.gz 命名，包内有 plugin.yaml。
+        - label: 该 Release 提供含 plugin.yaml 与必要资源的平台归档。The Release provides platform archives with plugin.yaml and required resources.
           required: true
-        - label: 这不是镜像、空壳仓库或索引中已存在的条目。
+        - label: 仓库提供实际组件，且索引中没有重复条目。The repository contains a component and has no duplicate index entry.
           required: true
-        - label: 我明白是否收录由维护者审核决定。
+        - label: 我明白是否收录由维护者审核决定。I understand that maintainers review listing requests.
           required: true

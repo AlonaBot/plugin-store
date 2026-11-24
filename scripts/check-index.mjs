@@ -1,4 +1,4 @@
-// 校验 index.json 是否符合 Core 的插件源格式（CONTRACTS §9.2）。
+// 校验 index.json 是否符合 Core contracts/pluginindex 的插件源格式。
 // 用法：node scripts/check-index.mjs [文件路径]，缺省校验仓库根目录的 index.json。
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -25,7 +25,7 @@ for (const key of Object.keys(document)) {
 if (document.version !== 1) fail('$.version', `expected 1, got ${JSON.stringify(document.version)}`);
 if (!Array.isArray(document.plugins)) fail('$.plugins', 'expected an array');
 
-/** 角色取自 CONTRACTS §9.1 的四种组件类型。 */
+/** 角色与 Core contracts/pluginindex 的四种组件类型一致。 */
 const roles = new Set(['plugin', 'adapter', 'agent', 'webui']);
 
 /** owner/name 形式，与 Core 的 repositoryName 正则逐字相同。 */

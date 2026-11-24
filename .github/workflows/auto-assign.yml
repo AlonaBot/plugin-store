@@ -1,0 +1,21 @@
+# 为其他贡献者的非草稿 PR 请求维护者审阅，避免向作者自己请求审阅。
+name: Auto assign reviewer
+
+on:
+  pull_request_target:
+    types: [opened, ready_for_review, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  reviewer:
+    if: github.event.pull_request.draft == false && github.event.pull_request.user.login != 'FlanChanXwO'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 请求维护者审阅
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: gh pr edit "$PR_URL" --add-reviewer FlanChanXwO
