@@ -15,6 +15,11 @@
       "repo": "AlonaBot/alonabot-plugin-help",
       "role": "plugin",
       "tags": ["help", "commands"]
+    },
+    {
+      "repo": "FlanChanXwO/alonabot-plugin-setu",
+      "role": "plugin",
+      "tags": ["色图", "插画", "OneBot11"]
     }
   ]
 }
