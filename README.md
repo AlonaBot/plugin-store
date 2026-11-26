@@ -12,8 +12,8 @@ Publish a GitHub Release in your component repository, then complete the [submis
 
 - [Index format and validation](docs/index-format.md)
 - [Contributing](CONTRIBUTING.md)
-- [Build and publish a component](https://github.com/AlonaBot/AlonaBot/blob/main/docs/plugin-guide.md)
-- [Use the component store](https://github.com/AlonaBot/AlonaBot/blob/main/docs/deployment.md)
+- [Build and publish a component](https://alonabot.github.io/en/docs/advanced/publish)
+- [Use the component store](https://alonabot.github.io/en/docs/usage/webui)
 
 Validate an index change with Node.js:
 

@@ -23,7 +23,7 @@ Add a component repository to `index.json` using this structure:
 
 The WebUI reads display information from the component's Release and platform archive declaration. Keep names, versions, descriptions, icons and download URLs in the component repository. The index follows repositories without pinning their release versions.
 
-Core defines the format in [`contracts/pluginindex`](https://github.com/AlonaBot/AlonaBot/tree/main/contracts/pluginindex). Its [deployment guide](https://github.com/AlonaBot/AlonaBot/blob/main/docs/deployment.md) explains how users install from the store.
+Core defines the format in [`contracts/pluginindex`](https://github.com/AlonaBot/AlonaBot/tree/main/contracts/pluginindex). Its [deployment guide](https://alonabot.github.io/en/docs/usage/webui) explains how users install from the store.
 
 ## Validate an edit
 

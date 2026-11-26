@@ -23,7 +23,7 @@
 
 WebUI 从组件的 Release 与平台归档声明读取展示信息。名称、版本、描述、图标与下载地址由组件仓库维护；索引跟随仓库，不固定发行版本。
 
-Core 在 [`contracts/pluginindex`](https://github.com/AlonaBot/AlonaBot/tree/main/contracts/pluginindex) 定义格式。[部署指南](https://github.com/AlonaBot/AlonaBot/blob/main/docs/deployment.zh-CN.md)说明用户如何从商店安装。
+Core 在 [`contracts/pluginindex`](https://github.com/AlonaBot/AlonaBot/tree/main/contracts/pluginindex) 定义格式。[部署指南](https://alonabot.github.io/docs/usage/webui)说明用户如何从商店安装。
 
 ## 校验改动
 
