@@ -12,8 +12,8 @@
 
 - [索引格式与校验](docs/index-format.zh-CN.md)
 - [贡献指南](CONTRIBUTING.zh-CN.md)
-- [构建与发布组件](https://github.com/AlonaBot/AlonaBot/blob/main/docs/plugin-guide.zh-CN.md)
-- [使用组件商店](https://github.com/AlonaBot/AlonaBot/blob/main/docs/deployment.zh-CN.md)
+- [构建与发布组件](https://alonabot.github.io/docs/advanced/publish)
+- [使用组件商店](https://alonabot.github.io/docs/usage/webui)
 
 修改索引后，使用 Node.js 校验：
 
