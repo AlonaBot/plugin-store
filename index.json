@@ -2,6 +2,11 @@
   "version": 1,
   "plugins": [
     {
+      "repo": "AlonaBot/alonabot-adapter-qq",
+      "role": "adapter",
+      "tags": ["QQ", "官方机器人", "Webhook", "WebSocket"]
+    },
+    {
       "repo": "AlonaBot/alonabot-adapter-telegram",
       "role": "adapter",
       "tags": ["Telegram"]
