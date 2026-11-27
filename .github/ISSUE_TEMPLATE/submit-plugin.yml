@@ -19,7 +19,7 @@ body:
     attributes:
       label: 仓库 / Repository
       description: owner/name 形式，与 Release 所在仓库一致。Use the repository containing the Release.
-      placeholder: AlonaBot/alonabot-plugin-help
+      placeholder: AlonaBot/alonabot-plugin-builtin
     validations:
       required: true
   - type: dropdown

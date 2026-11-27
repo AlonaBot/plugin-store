@@ -12,7 +12,7 @@
       "tags": ["OneBot11", "QQ"]
     },
     {
-      "repo": "AlonaBot/alonabot-plugin-help",
+      "repo": "AlonaBot/alonabot-plugin-builtin",
       "role": "plugin",
       "tags": ["help", "commands"]
     },
